@@ -1,5 +1,6 @@
 package filmes.model;
 
+
 import java.sql.Date;
 
 import javax.persistence.Column;
@@ -10,7 +11,7 @@ import javax.persistence.Id;
 
 @Entity(name = "movieBase")
 public class FilmeModel {
-    
+	   
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
@@ -23,6 +24,38 @@ public class FilmeModel {
 	
 	@Column(nullable = false)
 	private Date DataLancamento;
+
+	public Long getId() {
+		return Id;
+	}
+
+	public void setId(Long id) {
+		Id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getSinopse() {
+		return sinopse;
+	}
+
+	public void setSinopse(String sinopse) {
+		this.sinopse = sinopse;
+	}
+
+	public Date getDataLancamento() {
+		return DataLancamento;
+	}
+
+	public void setDataLancamento(Date dataLancamento) {
+		DataLancamento = dataLancamento;
+	}
 
 	@Override
 	public int hashCode() {
@@ -66,12 +99,11 @@ public class FilmeModel {
 			return false;
 		return true;
 	}
+	
+	
+	
 
-	@Override
-	public String toString() {
-		return "FilmeModel [Id=" + Id + ", nome=" + nome + ", sinopse=" + sinopse + ", DataLancamento=" + DataLancamento
-				+ "]";
-	}
+
 	
 	
 }
