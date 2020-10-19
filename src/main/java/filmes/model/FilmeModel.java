@@ -22,7 +22,7 @@ public class FilmeModel {
 	@Column(nullable = false)
 	private String sinopse;
 	
-	@Column(nullable = false)
+  	@Column(nullable = false)
 	private Date DataLancamento;
 
 	public Long getId() {
