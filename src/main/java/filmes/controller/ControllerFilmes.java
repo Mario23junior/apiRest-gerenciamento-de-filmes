@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,5 +36,10 @@ public class ControllerFilmes {
     	 return filmerepository.findById(id)
     			 .map(listID -> ResponseEntity.ok().body(listID))
     			 .orElse(ResponseEntity.notFound().build());
+    }
+    
+    @PostMapping(value = "/save")
+    public FilmeModel create(@RequestBody FilmeModel movie) {
+    	return filmerepository.save(movie);
     }
 }

@@ -1,8 +1,6 @@
 package filmes.model;
 
 
-import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,8 +20,8 @@ public class FilmeModel {
 	@Column(nullable = false)
 	private String sinopse;
 	
-  	@Column(nullable = false)
-	private Date DataLancamento;
+	@Column(nullable = false)
+  	private String datalancamento;
 
 	public Long getId() {
 		return Id;
@@ -49,19 +47,19 @@ public class FilmeModel {
 		this.sinopse = sinopse;
 	}
 
-	public Date getDataLancamento() {
-		return DataLancamento;
+	public String getDataLancamento() {
+		return datalancamento;
 	}
 
-	public void setDataLancamento(Date dataLancamento) {
-		DataLancamento = dataLancamento;
+	public void setDataLancamento(String dataLancamento) {
+		datalancamento = dataLancamento;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((DataLancamento == null) ? 0 : DataLancamento.hashCode());
+		result = prime * result + ((datalancamento == null) ? 0 : datalancamento.hashCode());
 		result = prime * result + ((Id == null) ? 0 : Id.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + ((sinopse == null) ? 0 : sinopse.hashCode());
@@ -77,10 +75,10 @@ public class FilmeModel {
 		if (getClass() != obj.getClass())
 			return false;
 		FilmeModel other = (FilmeModel) obj;
-		if (DataLancamento == null) {
-			if (other.DataLancamento != null)
+		if (datalancamento == null) {
+			if (other.datalancamento != null)
 				return false;
-		} else if (!DataLancamento.equals(other.DataLancamento))
+		} else if (!datalancamento.equals(other.datalancamento))
 			return false;
 		if (Id == null) {
 			if (other.Id != null)
@@ -99,11 +97,4 @@ public class FilmeModel {
 			return false;
 		return true;
 	}
-	
-	
-	
-
-
-	
-	
 }
