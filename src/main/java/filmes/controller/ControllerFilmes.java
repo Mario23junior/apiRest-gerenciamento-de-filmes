@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,4 +43,29 @@ public class ControllerFilmes {
     public FilmeModel create(@RequestBody FilmeModel movie) {
     	return filmerepository.save(movie);
     }
+    
+    @PutMapping(path = "/update/{id}")
+    public ResponseEntity<FilmeModel>update(@PathVariable("id") long id,@RequestBody FilmeModel movieUpdate){
+    	
+       return filmerepository.findById(id)	
+    		   .map(movie -> {
+    			   movie.setDataLancamento(movieUpdate.getDataLancamento());
+    			   movie.setNome(movieUpdate.getNome());
+    			   movie.setSinopse(movieUpdate.getSinopse());
+    			   FilmeModel update = filmerepository.save(movie);
+    			   return ResponseEntity.ok().body(update);
+    		   }).orElse(ResponseEntity.notFound().build());
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
